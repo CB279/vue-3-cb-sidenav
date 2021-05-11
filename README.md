@@ -16,12 +16,12 @@
 
 ## Development
 
-npm install @vue-cb/side-nav
+npm install @vue-cb/sidenav
 
 ## Config
 
 ```js
-import sidenav from "@vue-cb/side-nav";
+import sidenav from "@vue-cb/sidenav";
 
 createApp(app).use(sidenav);
 ```
