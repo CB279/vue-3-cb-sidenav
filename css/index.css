@@ -1,0 +1,23 @@
+.cb--side-nav .side-nav-link {
+    cursor: pointer;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+    font-size: 0.9rem;
+}
+.cb--side-nav > .side-nav-collapse {
+    overflow: hidden;
+    -webkit-transition: height 0.2s ease;
+    -moz-transition: height 0.2s ease;
+    -o-transition: height 0.2s ease;
+    transition: height 0.2s ease;
+}
+.cb--side-nav > .side-nav-collapse.collapsed {
+    overflow: hidden;
+    -webkit-transition: height 0.2s ease;
+    -moz-transition: height 0.2s ease;
+    -o-transition: height 0.2s ease;
+    transition: height 0.2s ease;
+}

@@ -1,0 +1,26 @@
+{
+    "name": "@vue-cb/sidenav",
+    "version": "1.0.0",
+    "description": "vue 3, sidenav",
+    "main": "lib/index.js",
+    "directories": {
+        "lib": "lib"
+    },
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/CB279/vue-3-cb-sidenav.git"
+    },
+    "keywords": [
+        "vue 3",
+        "sidenav"
+    ],
+    "author": "",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/CB279/vue-3-cb-sidenav/issues"
+    },
+    "homepage": "https://github.com/CB279/vue-3-cb-sidenav#readme"
+}
