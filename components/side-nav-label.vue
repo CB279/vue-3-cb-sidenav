@@ -19,18 +19,18 @@ export default {
         linkStyle: Object,
         tag: {
             type: String,
-            default: "div"
-        }
+            default: "div",
+        },
     },
     setup() {
         const state = reactive({
-            height: 0
+            height: 0,
         });
 
-        const height = computed(() => state.height);
+        const height = computed(() => state.el.scrollHeight);
 
         const self = reactive({
-            height
+            height,
         });
 
         const __NAV_LEVEL__ = inject("__NAV_LEVEL__", undefined);
@@ -49,16 +49,16 @@ export default {
             }
         });
 
-        const label = el => {
+        const label = (el) => {
             if (el) {
-                state.height = el.scrollHeight;
+                state.el = el;
             }
         };
 
         return {
             level,
-            label
+            label,
         };
-    }
+    },
 };
 </script>

@@ -31,7 +31,7 @@ import {
     onMounted,
     onBeforeUnmount,
     watch,
-    watchEffect
+    watchEffect,
 } from "vue";
 import { useRouter, RouterLink, useRoute, useLink } from "vue-router";
 
@@ -39,7 +39,7 @@ export default {
     props: {
         ...RouterLink.props,
         unlink: Boolean,
-        linkStyle: Object
+        linkStyle: Object,
     },
     setup(props, { slots }) {
         const router = useRouter();
@@ -60,25 +60,27 @@ export default {
             toggle: false,
             children: [],
             collapse: null,
-            height: 0
+            el: null,
         });
 
         const heightCollapse = computed(() =>
             state.toggle ? state.children.reduce((a, b) => a + b.height, 0) : 0
         );
 
-        const height = computed(() => state.height + heightCollapse.value);
+        const height = computed(
+            () => state.el.scrollHeight + heightCollapse.value
+        );
+
+        const __NAV_LEVEL__ = inject("__NAV_LEVEL__", undefined);
+        const level = computed(() => {
+            return 1 + (__NAV_LEVEL__ ? __NAV_LEVEL__.value : 0);
+        });
 
         const self = reactive({
             active,
             isChildren,
             height,
-            level
-        });
-
-        const __NAV_LEVEL__ = inject("__NAV_LEVEL__", undefined);
-        const level = computed(() => {
-            return 1 + (__NAV_LEVEL__ ? __NAV_LEVEL__.value : 0);
+            level,
         });
 
         const __NAV_CHILDDEN__ = inject("__NAV_CHILDDEN__", undefined);
@@ -94,7 +96,7 @@ export default {
 
         const update = () => {
             if (isChildren.value) {
-                state.toggle = state.children.find(c => c.active);
+                state.toggle = state.children.find((c) => c.active);
             }
         };
 
@@ -130,8 +132,8 @@ export default {
                 }
             );
 
-            const navChild = child => {
-                const c = state.children.find(c => c === child);
+            const navChild = (child) => {
+                const c = state.children.find((c) => c === child);
                 if (c) {
                     state.children.splice(state.children.indexOf(c), 1);
                 } else {
@@ -147,9 +149,9 @@ export default {
             });
         }
 
-        const link = el => {
+        const link = (el) => {
             if (el) {
-                state.height = el.scrollHeight;
+                state.el = el;
             }
         };
 
@@ -177,8 +179,8 @@ export default {
             activeClass,
             isToggle,
             go,
-            update
+            update,
         };
-    }
+    },
 };
 </script>
